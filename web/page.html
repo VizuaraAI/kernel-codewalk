@@ -1,0 +1,56 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Lecture 8 Code Walk</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&family=JetBrains+Mono:wght@400;500;600&display=swap">
+<style>/*FONTS*/</style>
+<style>/*STYLE*/</style>
+
+<div class="app">
+  <header class="top">
+    <div class="brand">
+      <div class="eyebrow">Kernel Engineering · Lecture 8 · the notebook, line by line</div>
+      <h1>Four matrix-multiplication kernels, one line at a time</h1>
+    </div>
+    <nav id="ktabs" role="tablist" aria-label="Kernels"></nav>
+  </header>
+
+  <main class="walk">
+    <section class="left" aria-label="The notebook cell and the reasoning for the highlighted line">
+      <div class="codecard"><div class="filebar" id="file"></div><div id="code" tabindex="0"></div></div>
+      <div class="reasoncard">
+        <ol id="reason" aria-live="polite"></ol>
+        <div class="tryit" id="tryit" hidden></div>
+      </div>
+    </section>
+
+    <section class="right" aria-label="What the highlighted line does">
+      <div class="beatbar"><span id="lineno"></span><h2 id="q"></h2><span id="pos"></span></div>
+      <div id="stagebox"><svg id="stage" role="img" aria-label="Animation of the highlighted line"></svg><div id="tip" hidden></div></div>
+      <p class="narrow-hint">The pictures are detailed: turn your phone sideways, or open this on a laptop.</p>
+      <div class="vals" id="vals" aria-live="polite" hidden></div>
+    </section>
+  </main>
+
+  <nav class="transport" aria-label="Steps">
+    <button class="t" id="back" type="button">&larr; Back</button>
+    <button class="t primary" id="next" type="button">Next &rarr;</button>
+    <button class="t" id="replay" type="button" title="Play this step again (R)">Replay</button>
+    <div id="dots" aria-label="Lines of this kernel"></div>
+    <span id="stepcount"></span>
+    <span class="keys"><kbd>&rarr;</kbd> next step · <kbd>&larr;</kbd> back · <kbd>Shift</kbd>+<kbd>&rarr;</kbd> next line · <kbd>R</kbd> replay · click a line of code</span>
+  </nav>
+  <p class="prov" id="prov"></p>
+</div>
+
+<script>/*DATA*/</script>
+<script>/*SCRIPTS*/</script>
+<script>
+  (function () {
+    var d = window.CW.DATA;
+    document.getElementById('prov').innerHTML = 'Every number on these pages comes from running the notebook’s own kernel cells on a CPU, one thread at a time, with <code>cuda.syncthreads()</code> as a real barrier (<code>trace_kernels.py</code>). Two blocks of each kernel were traced in full, and C matched A @ B on both. ' + d.note;
+    window.CW.init();
+  })();
+</script>

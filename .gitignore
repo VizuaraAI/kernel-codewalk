@@ -1,0 +1,8 @@
+.DS_Store
+.env*
+.vercel/
+__pycache__/
+deploy/
+out/walk_text.md
+prototype_dark/
+trace/run.log
